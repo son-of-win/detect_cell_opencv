@@ -22,8 +22,14 @@ def first_method_process(filename, list_low_accuracy):
         if(accuracy_2 < 0.6):
             list_low_accuracy.write(filename + "/" + str(accuracy_1) + "/" + str(accuracy_2) + "\n")
         else:
+            draw_box(img, text_boxes_2)
+            draw_key(img, xmins, xmaxs, ymins, ymaxs)
+            cv2.imwrite('result/{}.png'.format(filename), img)
             print(filename + ":" + str(accuracy_2))
     else: 
+        draw_box(img, text_boxes)
+        draw_key(img, xmins, xmaxs, ymins, ymaxs)
+        cv2.imwrite('result/{}.png'.format(filename), img)
         print(filename + ":" + str(accuracy_1))
 
 # f = open('train_images.txt','r')

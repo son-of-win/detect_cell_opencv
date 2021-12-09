@@ -5,7 +5,7 @@ def pre_process_image(img, morph_size=(10,2)):
     pre = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # chuyển ảnh sang binary áp dụng thuật toán phân ngưỡng ảnh OTSU
     pre = cv2.threshold(pre, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU )[1]
-    # threshold = 250 là giá trị ngưỡng, những điểm ảnh có giá trị > 250 sẽ được gán lại bằng 255
+    # threshold = 128 là giá trị ngưỡng, những điểm ảnh có giá trị > 250 sẽ được gán lại bằng 255
     # xử lí hình thái học của ảnh
     # sử dụng phép giãn nở dilate để tăng kích thước của đối tượng trong ảnh
     copy_img = pre.copy()

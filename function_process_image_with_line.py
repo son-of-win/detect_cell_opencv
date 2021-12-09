@@ -37,7 +37,7 @@ def detect_line(file_path, min_line_width):
     img_bin_ver = cv2.morphologyEx(img_bin, cv2.MORPH_OPEN, kernel_v)
     img_bin_final = img_bin_hor | img_bin_ver
     final_kernel = np.ones((3,3), np.uint8)
-    img_bin_final = cv2.dilate(img_bin, final_kernel, iterations=1)
+    img_bin_final = cv2.dilate(img_bin_final, final_kernel, iterations=1)
 
     boxes = []
     # cv2.imwrite('temp/dilate.png', img_bin_final)

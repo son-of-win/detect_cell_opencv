@@ -44,13 +44,18 @@ def cal_iou(x1, x2, y1, y2, xmins, xmaxs, ymins, ymaxs):
 
     return False
 
-def draw_box(img, xmin, xmax, ymin, ymax):
-    img = cv2.line(img, (xmin, ymin), (xmin, ymax), color=(255, 0, 0), thickness=1)
-    img = cv2.line(img, (xmin, ymin), (xmax, ymin), color=(255, 0, 0), thickness=1)
-    img = cv2.line(img, (xmin, ymax), (xmax, ymax), color=(255, 0, 0), thickness=1)
-    img = cv2.line(img, (xmax, ymin), (xmax, ymax), color=(255, 0, 0), thickness=1)
+def draw_box(img, text_boxes):
+    for box in text_boxes:
+        x = box[0] + 3 
+        y = box[1]
+        w = box[2] - 10
+        h = box[3]
+        img = cv2.line(img, (x, y), (x + w, y), color=(255, 0, 0), thickness=1)
+        img = cv2.line(img, (x, y), (x, y + h), color=(255, 0, 0), thickness=1)
+        img = cv2.line(img, (x + w, y), (x + w, y + h), color=(255, 0, 0), thickness=1)
+        img = cv2.line(img, (x, y + h), (x + w, y + h), color=(255, 0, 0), thickness=1)
     # cv2.imwrite('box1.png',img)
-    return img
+    # return img
 
 def get_key_xml(file_path):
     table_data = minidom.parse(file_path)
